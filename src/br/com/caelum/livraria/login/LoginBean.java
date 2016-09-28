@@ -9,11 +9,18 @@ import br.com.caelum.livraria.bean.MenuBean;
 import br.com.caelum.livraria.dao.UsuarioDao;
 import br.com.caelum.livraria.modelo.Usuario;
 
+/**
+ * @author Ramon Vieira
+ *
+ */
+
 @Model
 public class LoginBean {
 	
 	private Usuario usuario = new Usuario();
-	private UsuarioDao dao = new UsuarioDao();
+	
+	@Inject
+	private UsuarioDao dao;
 	
 	@Inject
 	UsuarioLogadoBean usuarioLogado;

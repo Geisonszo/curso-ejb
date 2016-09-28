@@ -2,7 +2,9 @@ package br.com.caelum.livraria.dao;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import br.com.caelum.livraria.modelo.Autor;
 
@@ -14,10 +16,25 @@ import br.com.caelum.livraria.modelo.Autor;
 @Stateless
 public class AutorDao {
 
-	private Banco banco = new Banco();
+	@Inject
+	private Banco banco;
+	
+	@PostConstruct
+	void inicialize(){
+		System.out.println("[INFO] - AutorDao foi inicializado.");
+	}
 
 	public void salva(Autor autor) {
-		banco.save(autor);
+		System.out.println("[INFO] Salvando o Autor " + autor.getNome());
+
+//	    try {
+//	        Thread.sleep(20000);    // 20 segundos
+//	    } catch (InterruptedException e) {
+//	        e.printStackTrace();
+//	    }
+
+	    banco.save(autor);
+	    System.out.println("[INFO] Salvou o Autor " + autor.getNome());
 	}
 	
 	public List<Autor> todosAutores() {
