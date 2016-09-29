@@ -26,11 +26,11 @@ public class AutorBean {
 	}
 	
 	public void cadastra() {
-		this.dao.salva(autor);
-		this.autor = new Autor();
+		dao.salva(autor);
+		autor = new Autor();
 	}
 	
 	public List<Autor> getAutores() {
-		return this.dao.todosAutores();
+		return dao.todosAutores();
 	}
 }

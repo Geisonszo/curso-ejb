@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
 
 import br.com.caelum.livraria.modelo.Autor;
 import br.com.caelum.livraria.modelo.Livro;
@@ -16,8 +14,6 @@ import br.com.caelum.livraria.modelo.Usuario;
  *
  */
 
-@Singleton
-@Startup
 public class Banco {
 	
 	public static List<Livro> livros = new ArrayList<Livro>();

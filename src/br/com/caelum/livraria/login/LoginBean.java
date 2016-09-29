@@ -1,9 +1,10 @@
 package br.com.caelum.livraria.login;
 
-import javax.enterprise.inject.Model;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.caelum.livraria.bean.MenuBean;
 import br.com.caelum.livraria.dao.UsuarioDao;
@@ -14,7 +15,8 @@ import br.com.caelum.livraria.modelo.Usuario;
  *
  */
 
-@Model
+@Named
+@RequestScoped
 public class LoginBean {
 	
 	private Usuario usuario = new Usuario();
@@ -33,7 +35,6 @@ public class LoginBean {
 	}
 	
 	public String efetuaLogin() {
-		
 		Usuario usuarioEncontrado = this.dao.buscaPeloLogin(usuario.getLogin());
 		
 		if(usuarioEncontrado!= null && possuiMesmaSenha(usuarioEncontrado)) {
