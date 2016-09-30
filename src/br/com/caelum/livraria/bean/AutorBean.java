@@ -5,8 +5,8 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.modelo.Autor;
+import br.com.caelum.livraria.service.AutorService;
 
 /**
  * @author Ramon Vieira
@@ -19,18 +19,18 @@ public class AutorBean {
 	private Autor autor = new Autor();
 	
 	@Inject
-	private AutorDao dao;
+	private AutorService autorService;
 	
 	public Autor getAutor() {
 		return autor;
 	}
 	
 	public void cadastra() {
-		dao.salva(autor);
+		autorService.adiciona(autor);
 		autor = new Autor();
 	}
 	
 	public List<Autor> getAutores() {
-		return dao.todosAutores();
+		return autorService.todosAutores();
 	}
 }
